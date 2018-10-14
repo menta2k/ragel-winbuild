@@ -5,8 +5,9 @@ environment:
     RAGEL_VERSION: 6.10
 
 install:
-  - C:\msys64\mingw64\bin\gcc.exe -v
   - C:\msys64\usr\bin\bash -lc 'cd $APPVEYOR_BUILD_FOLDER; wget http://www.colm.net/files/ragel/ragel-$RAGEL_VERSION.tar.gz; tar -xf ragel-$RAGEL_VERSION.tar.gz; cd ragel-$RAGEL_VERSION; PATH=$PATH:/mingw64/bin; CC=/mingw64/bin/gcc CXX=/mingw64/bin/g++ ./configure --prefix=/mingw64/; make LDFLAGS="--static"'
+
+build: off
 
 artifacts:
   - path: ragel-$(RAGEL_VERSION)/ragel/ragel.exe
